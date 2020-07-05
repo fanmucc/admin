@@ -1,9 +1,18 @@
 import Home from '../views/Home.vue'
+import Main from '../components/main'
 const routes = [
     {
       path: '/',
       name: 'Home',
-      component: Home
+    //   redirect: '/home',
+      component: Main,
+    //   children: [
+    //       {
+    //           path: '/home',
+    //           name: '_Home',
+    //           component: Home
+    //       }
+    //   ]
     },
     {
       path: '/about',

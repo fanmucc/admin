@@ -17,6 +17,13 @@ const BASE_URL = process.env.NODE_ENV === 'production'
   : '/'
 
 module.exports = {
+  // css: {
+  //     loaderOptions: {
+  //         less: {
+  //             javascriptEnabled: true,
+  //         }
+  //     }
+  // },
   // Project deployment base
   // By default we assume your app will be deployed at the root of a domain,
   // e.g. https://www.my-app.com/
