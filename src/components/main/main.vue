@@ -2,21 +2,11 @@
     <div class="main">
         <a-layout id="components-layout-demo-custom-trigger">
             <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-              <div class="logo" />
-              <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-                <a-menu-item key="1">
-                  <a-icon type="user" />
-                  <span>nav 1</span>
-                </a-menu-item>
-                <a-menu-item key="2">
-                  <a-icon type="video-camera" />
-                  <span>nav 2</span>
-                </a-menu-item>
-                <a-menu-item key="3">
-                  <a-icon type="upload" />
-                  <span>nav 3</span>
-                </a-menu-item>
-              </a-menu>
+              <div class="logo">
+                  <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
+                  <img v-show="collapsed" :src="minLogo" key="min-logo" />
+              </div>
+              <side-menu></side-menu>
             </a-layout-sider>
         <a-layout>
           <a-layout-header style="background: #fff; padding: 0">
@@ -39,6 +29,14 @@
 import { Layout, Icon, Menu } from 'ant-design-vue'
 const { Header, Sider, Content } = Layout;
 const MenuItem  = Menu.Item
+const SubMenu = Menu.SubMenu
+
+import SideMenu from './components/side-menu'
+
+import minLogo from '@/assets/images/logo-min.jpg'
+import maxLogo from '@/assets/images/logo.jpg'
+import './main.less'
+
 export default {
   name: 'Main',
   components: {
@@ -48,39 +46,16 @@ export default {
     'a-layout-content': Content,
     'a-icon': Icon,
     'a-menu': Menu,
-    'a-menu-item': MenuItem
+    'a-menu-item': MenuItem,
+    'a-sub-menu': SubMenu,
+    'side-menu': SideMenu
   },
   data() {
     return {
       collapsed: false,
+      minLogo,
+      maxLogo
     };
   },
 };
 </script>
-<style lang="less" scoped>
-.main {
-  width: 100%;
-  height: 100%;
-  #components-layout-demo-custom-trigger {
-      width: 100%;
-      height: 100%;
-  }
-}
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
-}
-
-#components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-</style>
