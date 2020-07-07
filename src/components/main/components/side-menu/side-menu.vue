@@ -2,49 +2,71 @@
   <div id="side-menu">
     <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <template v-for="item in routerList">
-            <!-- 当路由信息有子信息是走这一步 -->
-            <template v-if="item.children && item.children.length === 1">
-                <side-menu-item v-if="showChildren(item)" :key="`menu-${item.name}`" :parent-item="item"></side-menu-item>
+            <!-- 当路由信息有子路由是走这一步 -->
+            <template v-if="item.children != undefined">
+                <side-menu-item :key="`menu-${item.name}`" :parent-item="item"></side-menu-item>
             </template>
             <!-- 没有走这里 -->
             <template v-else>
-                <side-menu-item v-if="showChildren(item)" :key="`menu-${item.name}`" :parent-item="item"></side-menu-item>
-                <a-menu-item v-else :name="getNameOrHref(item)"  :key="`$menu-${item.name}`">
+                <a-menu-item :name="item.name" :key="`$menu-${item.name}`">
                     <a-icon :type="item.meta.icon" />
                     <span>{{item.meta.title}}</span>
                 </a-menu-item> 
             </template>
         </template>
-        <!-- <a-menu-item v-for="(item, index) in routerList" :key="index">
-            <a-icon :type="item.meta.icon" />
-            <span>{{item.meta.title}}</span>
-        </a-menu-item> -->
-        <!-- <a-sub-menu key="sub4">
-            <span slot="title"><a-icon type="setting" /><span>Navigation Three</span></span>
-            <a-menu-item key="9">
-            Option 9
-            </a-menu-item>
-            <a-menu-item key="10">
-            Option 10
-            </a-menu-item>
-            <a-menu-item key="11">
-            Option 11
-            </a-menu-item>
-            <a-menu-item key="12">
-            Option 12
-            </a-menu-item>
-        </a-sub-menu> -->
     </a-menu>
   </div>
 </template>
 
 <script>
-import { Menu, Icon} from 'ant-design-vue'
+import { Icon, Menu } from 'ant-design-vue'
+console.log(Menu)
 const MenuItem  = Menu.Item
 const SubMenu = Menu.SubMenu
 
 import SideMenuItem from './side-menu-item'
 import mixin from './mixin'
+
+// const SideMenuItem = {
+//     name: 'SideMenuItem',
+//     props: {
+//         ParentItem: {
+//             type: Object,
+//             default: () => {}
+//         }
+//     },
+//     components: {
+//     },
+//     data () {
+//         return {
+
+//         }
+//     },
+//     render () {
+//         return (
+//             <template functional>
+//                     <a-sub-menu key="sub2">
+//                     <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
+//                     <a-menu-item key="5">
+//                     Option 5
+//                     </a-menu-item>
+//                     <a-menu-item key="6">
+//                     Option 6
+//                     </a-menu-item>
+//                     <a-sub-menu key="sub3" title="Submenu">
+//                     <a-menu-item key="7">
+//                         Option 7
+//                     </a-menu-item>
+//                     <a-menu-item key="8">
+//                         Option 8
+//                     </a-menu-item>
+//                     </a-sub-menu>
+//                 </a-sub-menu>
+//             </template>
+//         )
+//     }
+// }
+
 export default {
   name: 'SideMenu',
   components: {
@@ -108,6 +130,7 @@ export default {
                         },
                         {
                             path: '/name',
+                            name: 'namase7',
                             meta: {
                                 title: '姓名', 
                                 icon: 'user'

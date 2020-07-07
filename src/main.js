@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 Vue.config.productionTip = false
+import { Menu } from 'ant-design-vue'
+Vue.component(Menu.name, Menu)
 
 new Vue({
   router,

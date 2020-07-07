@@ -1,30 +1,29 @@
-<template>
-<!-- <a-sub-menu key="sub4">
-            <span slot="title"><a-icon type="setting" /><span>Navigation Three</span></span>
-            <a-menu-item key="9">
-            Option 9
-            </a-menu-item>
-            <a-menu-item key="10">
-            Option 10
-            </a-menu-item>
-            <a-menu-item key="11">
-            Option 11
-            </a-menu-item>
-            <a-menu-item key="12">
-            Option 12
-            </a-menu-item>
-        </a-sub-menu> -->
-    <a-sub-menu :name="`${parentName}`">
-        <template v-for="item in children">
-            <template v-if="item.children && item.children.length === 1">
-                <a-sub-menu v-if="showChildren(item)" :key="`menu-${item.name}`" :parent-item="item"></a-sub-menu>
-                <a-menu-item v-else :name="getNameOrHref(item, true)" :key="`menu-${item.children[0].name}`"><span>123</span></a-menu-item>
+<template functional>
+    <a-sub-menu key="sub2">
+        <!-- <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
+        <template v-for="item in parentItem.children">
+            <template v-if="item.children != undefined">
+                <side-menu-item :key="`menu-${item.name}`" :parent-item="item.children"></side-menu-item>
             </template>
             <template v-else>
-                <side-menu-item v-if="showChildren(item)" :key="`menu-${item.name}`" :parent-item="item"></side-menu-item>
-                <a-menu-item v-else :name="getNameOrHref(item)" :key="`menu-${item.name}`"><span>123</span></a-menu-item>
+                <a-menu-item :key="`menu-${item.name}`"><span>123</span></a-menu-item>
             </template>
-        </template>
+        </template> -->
+        <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
+        <a-menu-item key="5">
+          Option 5
+        </a-menu-item>
+        <a-menu-item key="6">
+          Option 6
+        </a-menu-item>
+        <a-sub-menu key="sub3" title="Submenu">
+          <a-menu-item key="7">
+            Option 7
+          </a-menu-item>
+          <a-menu-item key="8">
+            Option 8
+          </a-menu-item>
+        </a-sub-menu>
     </a-sub-menu>
 </template>
 <script>
