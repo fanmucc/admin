@@ -19,7 +19,10 @@ export default {
       }
     },
     mounted () {
-        console.log(this.parentItem)
+        console.log(this.parentItem, '123')
+    },
+    created () {
+      console.log(123)
     }
   }
   
