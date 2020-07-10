@@ -2,9 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+if (process.env.NODE_ENV !== 'production') require('@/mock')
+
+
+
 Vue.config.productionTip = false
-import { Menu } from 'ant-design-vue'
-Vue.component(Menu.name, Menu)
+
 
 new Vue({
   router,
