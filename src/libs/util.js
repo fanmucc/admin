@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
-
+import config from '@/config'
 export const TOKEN_KEY = 'token'
+const { title, cookieExpires } = config
 /**
  *  设置和读取token 
  */
