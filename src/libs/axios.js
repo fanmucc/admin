@@ -76,3 +76,5 @@ class HttpRequest {
         return instance(options)
     }
 }
+
+export default HttpRequest
