@@ -2,7 +2,7 @@
     <div class="admin-login">
         <div class="login-con">
             <h3 class="title">系统登录</h3>
-            <login-form ></login-form>
+            <login-form @on-success-valid="handleSubmit"></login-form>
             <p class="login-tip">输入任意用户名和密码即可</p>
         </div>
     </div>
@@ -13,6 +13,11 @@ export default {
     name: 'Login',
     components: {
         'login-form': LoginForm,
+    },
+    methods: {
+        handleSubmit({userName, password}) {
+            console.log(userName, password)
+        }
     }
 }
 </script>

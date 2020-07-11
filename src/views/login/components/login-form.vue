@@ -2,7 +2,8 @@
     <a-form
         id="components-form-demo-normal-login"
         :form="form"
-        class="login-form">
+        class="login-form"
+        @submit="handleSubmit">
         <a-form-item>
         <a-input
             class="login-input"
@@ -48,6 +49,22 @@ export default {
         'a-icon': Icon,
         'a-button': Button,
         'a-input-password': PassWord
+    },
+    beforeCreate() {
+        this.form = this.$form.createForm(this, { name: 'normal_login' });
+    },
+    methods: {
+        handleSubmit(e) {
+            e.preventDefault();
+            this.form.validateFields((err, values) => {
+                if (!err) {
+                    this.$emit('on-success-valid', {
+                        userName: values.userName,
+                        password: values.password
+                    })
+                }
+            });
+        }
     }
 }
 </script>
