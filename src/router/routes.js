@@ -29,6 +29,30 @@ const routes = [
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    },
+    {
+      path: '/401',
+      name: 'error_401',
+      meta: {
+        hideInMenu: true
+      },
+      component: () => import(/* webpackChunkName: "401" */'@/views/error-page/401.vue')
+    },
+    {
+      path: '/500',
+      name: 'error_500',
+      meta: {
+        hideInMenu: true
+      },
+      component: () => import(/* webpackChunkName: "500" */'@/views/error-page/500.vue')
+    },
+    {
+      path: '*',
+      name: 'error_404',
+      meta: {
+        hideInMenu: true
+      },
+      component: () => import(/* webpackChunkName: "404" */'@/views/error-page/404.vue')
     }
 ]
 const authority = [
