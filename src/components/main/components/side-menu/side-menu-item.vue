@@ -4,7 +4,7 @@
             <a-icon
             :type="data.attrs.menuInfo.meta.icon"
             v-if="data.attrs.menuInfo.meta.icon" />
-            {{data.attrs.menuInfo.meta.title}}
+            <span>{{data.attrs.menuInfo.meta.title}}</span>
         </span>
         <template v-for="item in data.attrs.menuInfo.children">
             <a-menu-item v-if="!item.children" :key="item.path">
