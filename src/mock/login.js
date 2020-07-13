@@ -30,23 +30,16 @@ const USER_MAP = {
               }
           },
           {
-              name: '404',
+              name: 'array',
               meta: {
-                  title: '404页',
-                  icon: 'user'
-              }
-          },
-          {
-              name: 'abc',
-              meta: {
-                  title: 'abc页',
+                  title: '列表',
                   icon: 'user'
               },
               children: [
                   {
-                      name: 'bcd',
+                      name: 'list',
                       meta: {
-                          title: 'abc/bcd',
+                          title: '列表页',
                           icon: 'user'
                       }
                   }

@@ -47,6 +47,24 @@ const routes = [
       component: () => import(/* webpackChunkName: "401" */'@/views/error-page/401.vue')
     },
     {
+      path: '/array',
+      name: 'array',
+      meta: {
+        title: 'array'
+      },
+      children: [
+        {
+          path: 'list',
+          name: 'list',
+          meta: {
+            title: 'list',
+            icon: 'user'
+          },
+          component: () => import(/*webpckChunkName: "list"*/ '@/views/list.vue')
+        }
+      ]
+    },
+    {
       path: '/500',
       name: 'error_500',
       meta: {
