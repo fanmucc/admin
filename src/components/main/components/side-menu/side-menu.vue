@@ -1,7 +1,7 @@
 <template>
   <div id="side-menu">
     <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-        <template v-for="item in routerList">
+        <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
                 <side-menu-item :key="`menu-${item.name}`" :menuInfo="item"></side-menu-item>
@@ -35,7 +35,12 @@ export default {
       'a-icon': Icon,
       SideMenuItem
   },
-  mixins: [ mixin],
+  props: {
+      routePageList: {
+          type: Array,
+          default: () => []
+      }
+  },
   data () {
       return {
           routerList : [

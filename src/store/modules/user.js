@@ -22,7 +22,9 @@ const state = {
     messageUnreadList: [],
     messageReadedList: [],
     messageTrashList: [],
-    messageContentStore: {}
+    messageContentStore: {},
+    routeList: [],               // 用户能够访问的路由信息
+    getRouteStatus: false        // 判断是否获取到了用户的路由信息8
 }
 const mutations = {
     setAvatar (state, avatarPath) {
@@ -43,6 +45,10 @@ const mutations = {
     },
     setHasGetInfo (state, status) {
         state.hasGetInfo = status
+    },
+    setRouteList (state, routerList) {
+        state.routeList = routerList
+        state.getRouteStatus = true
     },
     setMessageCount (state, count) {
         state.unreadCount = count
@@ -105,6 +111,7 @@ const actions = {
                         commit('setUserId', data.user_id)
                         commit('setAccess', data.access)
                         commit('setHasGetInfo', true)
+                        commit('setRouteList', data.routerPages)
                         resolve(data)
                     }).catch(err => {
                         reject(err)

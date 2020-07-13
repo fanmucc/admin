@@ -13,12 +13,34 @@ const USER_MAP = {
       user_id: '2',
       access: ['admin'],
       token: 'admin',
-      avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4'
+      avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4',
+      routerPages: [
+          {
+              name: 'home',
+              meta: {
+                  title: '首页',
+                  icon: 'user'
+              }
+          },
+          {
+              name: 'about',
+              meta: {
+                  title: 'about页',
+                  icon: 'user'
+              }
+          },
+          {
+              name: '404',
+              meta: {
+                  title: '404页',
+                  icon: 'user'
+              }
+          }
+      ]
     }
 }
 
 export const login = req => {
-    console.log(123, '=====')
     req = JSON.parse(req.body)
     return { token: USER_MAP[req.userName].token}
 }

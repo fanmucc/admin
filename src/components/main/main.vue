@@ -6,7 +6,7 @@
                   <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
                   <img v-show="collapsed" :src="minLogo" key="min-logo" />
               </div>
-              <side-menu></side-menu>
+              <side-menu :routePageList="routerPages"></side-menu>
             </a-layout-sider>
         <a-layout>
           <a-layout-header style="background: #fff; padding: 0">
@@ -19,13 +19,14 @@
           <a-layout-content
               :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
             >
-              Content
+              <router-view></router-view>
             </a-layout-content>
           </a-layout>
       </a-layout>
     </div>
 </template>
 <script>
+import store from '@/store'
 import { Layout, Icon, Menu } from 'ant-design-vue'
 const { Header, Sider, Content } = Layout;
 const MenuItem  = Menu.Item
@@ -49,6 +50,11 @@ export default {
     'a-menu-item': MenuItem,
     'a-sub-menu': SubMenu,
     'side-menu': SideMenu
+  },
+  computed: {
+    routerPages () {
+      return store.state.user.routeList
+    }
   },
   data() {
     return {
