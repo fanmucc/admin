@@ -24,7 +24,6 @@ const MenuItem  = Menu.Item
 const SubMenu = Menu.SubMenu
 
 import SideMenuItem from './side-menu-item.vue'
-import mixin from './mixin'
 
 export default {
   name: 'SideMenu',
@@ -43,78 +42,9 @@ export default {
   },
   data () {
       return {
-          routerList : [
-              {
-                  path: '/name1',
-                  name: 'namase1',
-                  meta: {
-                      title: '姓名', 
-                      icon: 'user'
-                  }
-              },
-              {
-                  path: '/name2',
-                  name: 'namase2',
-                  meta: {
-                      title: '姓名', 
-                      icon: 'user'
-                  }
-              },
-              {
-                  path: '/name3',
-                  name: 'namase3',
-                  meta: {
-                      title: '姓名', 
-                      icon: 'user'
-                  }
-              },
-              {
-                  path: '/name4',
-                  name: 'namase4',
-                  meta: {
-                      title: '姓名', 
-                      icon: 'user'
-                  }
-              },
-              {
-                  path: '/name5',
-                  name: 'namase5',
-                  meta: {
-                      title: '姓名', 
-                      icon: 'user'
-                  },
-                  children: [
-                      {
-                            path: '/name6',
-                            name: 'namase6',
-                            meta: {
-                                title: '姓名', 
-                                icon: 'user'
-                            }
-                        },
-                        {
-                            path: '/name7',
-                            name: 'namase7',
-                            meta: {
-                                title: '姓名', 
-                                icon: 'user'
-                            },
-                            children: [{
-                                 path: '/name8',
-                                    name: 'namase8',
-                                    meta: {
-                                        title: '姓名', 
-                                        icon: 'user'
-                                    },
-                            }]
-                        },
-                  ]
-              }
-          ]
       }
   },
   created () {
-        console.log(123, '====')
   },
 }
 </script>

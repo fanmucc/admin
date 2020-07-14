@@ -9,13 +9,13 @@
               <side-menu :routePageList="routerPages"></side-menu>
             </a-layout-sider>
         <a-layout>
-          <a-layout-header style="background: #fff; padding: 0">
-            <a-icon
+          <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" style="background: #fff; padding: 0">
+            <!-- <a-icon
               class="trigger"
               :type="collapsed ? 'menu-unfold' : 'menu-fold'"
               @click="() => (collapsed = !collapsed)"
-            />
-          </a-layout-header>
+            /> -->
+          </header-bar>
           <a-layout-content
               :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
             >
@@ -33,7 +33,7 @@ const MenuItem  = Menu.Item
 const SubMenu = Menu.SubMenu
 
 import SideMenu from './components/side-menu'
-
+import HeaderBar from './components/header-bar'
 import minLogo from '@/assets/images/logo-min.jpg'
 import maxLogo from '@/assets/images/logo.jpg'
 import './main.less'
@@ -49,6 +49,7 @@ export default {
     'a-menu': Menu,
     'a-menu-item': MenuItem,
     'a-sub-menu': SubMenu,
+    'header-bar': HeaderBar,
     'side-menu': SideMenu
   },
   computed: {
@@ -63,5 +64,10 @@ export default {
       maxLogo
     };
   },
+  methods: {
+    handleCollapsedChange (state) {
+      this.collapsed = state
+    }
+  }
 };
 </script>

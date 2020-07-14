@@ -15,7 +15,7 @@ const routerMenuIcon = (name, list, icon) => {
     }
 }
 
- export const routeIcon = (name) => {
+export const routeIcon = (name) => {
     let icon = ''
     switch (name) {
         case 'home':
@@ -25,4 +25,4 @@ const routerMenuIcon = (name, list, icon) => {
             return ''
     }
     return icon
- }
+}
