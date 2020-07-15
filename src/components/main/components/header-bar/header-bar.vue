@@ -1,23 +1,30 @@
 <template>
-    <a-layout-header>
+    <div class="header-bar">
         <sider-trigger :collapsed="collapsed" @on-change="handleCollpasedChange"></sider-trigger>
-    </a-layout-header>
+        <custom-bread-crumb :list="breadCrumbList"></custom-bread-crumb>
+    </div>
 </template>
 <script>
-import { Layout, Icon } from 'ant-design-vue'
+import { Icon } from 'ant-design-vue'
 import siderTrigger from './sider-trigger'
-const Header = Layout.Header
+import customBreadCrumb from './custom-bread-crumb'
+import './header-bar.less'
 export default {
     name: 'HeaderBar',
     components: {
-        'a-layout-header': Header,
         'a-icon': Icon,
-        siderTrigger
+        siderTrigger,
+        customBreadCrumb
     },
     props: {
         collapsed: {
             type: Boolean,
             default: false
+        }
+    },
+    computed: {
+        breadCrumbList () {
+            return this.$store.state.app.breadCrumbList
         }
     },
     methods: {

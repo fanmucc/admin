@@ -9,13 +9,9 @@
               <side-menu :routePageList="routerPages"></side-menu>
             </a-layout-sider>
         <a-layout>
-          <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" style="background: #fff; padding: 0">
-            <!-- <a-icon
-              class="trigger"
-              :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-              @click="() => (collapsed = !collapsed)"
-            /> -->
-          </header-bar>
+          <a-header class="header-con">
+            <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" style="background: #fff; padding: 0"></header-bar>
+          </a-header>
           <a-layout-content
               :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
             >
@@ -27,6 +23,8 @@
 </template>
 <script>
 import store from '@/store'
+import { mapMutations } from 'vuex'
+import routers from '@/router/routes'
 import { Layout, Icon, Menu } from 'ant-design-vue'
 const { Header, Sider, Content } = Layout;
 const MenuItem  = Menu.Item
@@ -45,6 +43,7 @@ export default {
     'a-layout-sider': Sider,
     'a-layout-header': Header,
     'a-layout-content': Content,
+    'a-header': Header,
     'a-icon': Icon,
     'a-menu': Menu,
     'a-menu-item': MenuItem,
@@ -65,8 +64,28 @@ export default {
     };
   },
   methods: {
+    ...mapMutations([
+      'setBreadCrumb',
+      'setHomeRoute',
+    ]),
     handleCollapsedChange (state) {
       this.collapsed = state
+    }
+  },
+  mounted () {
+    this.setHomeRoute(routers)
+    this.setBreadCrumb(this.$route)
+  },
+  watch: {
+    '$route' (newRoute) {
+      const { name, query, params, meta } = newRoute
+      // this.addTag({
+      //   route: { name, query, params, meta },
+      //   type: 'push'
+      // })
+      this.setBreadCrumb(newRoute)
+      // this.setTagNavList(getNewTagList(this.tagNavList, newRoute))
+      // this.$refs.sideMenu.updateOpenName(newRoute.name)
     }
   }
 };
