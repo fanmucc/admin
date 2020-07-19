@@ -20,7 +20,7 @@ const routes = [
       component: Main,
       children: [
           {
-              path: '/home',
+              path: 'home',
               name: 'home',
               meta: {
                 title: 'home',
@@ -41,7 +41,7 @@ const routes = [
       children: [
         {
           path: 'about',
-          name: 'About',
+          name: 'about',
           meta: {
             icon: 'user',
             title: 'about'

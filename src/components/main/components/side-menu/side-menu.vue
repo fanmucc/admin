@@ -1,14 +1,14 @@
 <template>
   <div id="side-menu">
-    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
+    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']" @click="handleClick">
         <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
-                <side-menu-item :key="`menu-${item.name}`" :menuInfo="item"></side-menu-item>
+                <side-menu-item :key="`${item.name}`" :menuInfo="item"></side-menu-item>
             </template>
             <!-- 没有走这里 -->
             <template v-else>
-                <a-menu-item :name="item.name" :key="`$menu-${item.name}`">
+                <a-menu-item :name="item.name" :key="`${item.name}`">
                     <a-icon :type="item.meta.icon" />
                     <span>{{item.meta.title}}</span>
                 </a-menu-item> 
@@ -46,5 +46,12 @@ export default {
   },
   created () {
   },
+  methods: {
+      handleClick (e) {
+          this.$router.push({
+              name: e.key
+          })
+      }
+  }
 }
 </script>

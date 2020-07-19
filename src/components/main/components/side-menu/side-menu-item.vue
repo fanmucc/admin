@@ -7,11 +7,9 @@
             <span>{{data.attrs.menuInfo.meta.title}}</span>
         </span>
         <template v-for="item in data.attrs.menuInfo.children">
-            <a-menu-item v-if="!item.children" :key="item.path">
-                <router-link :to="{ path: item.path }">
+            <a-menu-item v-if="!item.children" :key="item.name">
                 <a-icon :type="item.meta.icon" v-if="item.meta.icon" />
                     <span>{{ item.meta.title }}</span>
-                </router-link>
             </a-menu-item>
             <side-menu-item v-else :menuInfo="item" :key="item.path" />
         </template>

@@ -33,6 +33,7 @@ router.beforeEach((to, from, next) => {
       // 如果路由表数据为false，则重新拉去用户信息
       store.dispatch('getUserInfo').then(user => {
         next()
+        console.log('111','====')
       }).catch(() => {
         // 说明通过token登录发生错误，token 过期则跳转到登录页
         setToken('')    // 清空token

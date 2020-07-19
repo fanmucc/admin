@@ -47,6 +47,7 @@ const mutations = {
         state.hasGetInfo = status
     },
     setRouteList (state, routerList) {
+        console.log(routerList)
         state.routeList = routerList
         state.getRouteStatus = true
     },
