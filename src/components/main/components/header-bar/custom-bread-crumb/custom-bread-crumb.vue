@@ -1,10 +1,8 @@
 <template>
     <div class="custom-bread-crumb">
         <a-breadcrumb class="a-custom-bread-crumb">
-            <a-breadcrumb-item v-for="item in list" :key="`bread-crumb-${item.name}`">Home</a-breadcrumb-item>
-                {{ showTitle(item) }}
-            <BreadcrumbItem >
-      </BreadcrumbItem>
+            <a-breadcrumb-item v-for="item in list" :key="`bread-crumb-${item.name}`">{{ showTitle(item) }}</a-breadcrumb-item>
+                <!-- {{ showTitle(item) }} -->
         </a-breadcrumb>
     </div>
 </template>

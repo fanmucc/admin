@@ -12,12 +12,20 @@ const routes = [
     {
       path: '/',
       name: '_home',
+      meta: {
+        title: '_home',
+        icon: 'user'
+      },
       redirect: '/home',
       component: Main,
       children: [
           {
               path: '/home',
               name: 'home',
+              meta: {
+                title: 'home',
+                icon: 'user'
+              },
               component: Home
           }
       ]
@@ -25,12 +33,19 @@ const routes = [
     {
       path: '/',
       name: '_about',
-      redirect: '/home',
+      meta: {
+        title: '_about',
+        icon: 'user'
+      },
       component: Main,
       children: [
         {
           path: 'about',
           name: 'About',
+          meta: {
+            icon: 'user',
+            title: 'about'
+          },
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
@@ -42,6 +57,10 @@ const routes = [
       path: '/401',
       name: 'error_401',
       meta: {
+        title: '401',
+        icon: 'user'
+      },
+      meta: {
         hideInMenu: true
       },
       component: () => import(/* webpackChunkName: "401" */'@/views/error-page/401.vue')
@@ -50,7 +69,8 @@ const routes = [
       path: '/array',
       name: 'array',
       meta: {
-        title: 'array'
+        title: 'array',
+        icon: 'user'
       },
       children: [
         {
@@ -68,6 +88,8 @@ const routes = [
       path: '/500',
       name: 'error_500',
       meta: {
+        title: '500',
+        icon: 'user',
         hideInMenu: true
       },
       component: () => import(/* webpackChunkName: "500" */'@/views/error-page/500.vue')
@@ -76,6 +98,8 @@ const routes = [
       path: '*',
       name: 'error_404',
       meta: {
+        title: '404',
+        icon: 'user',
         hideInMenu: true
       },
       component: () => import(/* webpackChunkName: "404" */'@/views/error-page/404.vue')

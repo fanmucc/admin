@@ -35,7 +35,9 @@ export const getParams = url => {
  * @returns {Array}
  */
 export const getBreadCrumbList = (route, homeRoute) => {
+  console.log(route, homeRoute)
   let homeItem = { ...homeRoute, icon: homeRoute.meta.icon }
+  console.log(homeItem, '====')
   let routeMetched = route.matched
   if (routeMetched.some(item => item.name === homeRoute.name)) return [homeItem]
   let res = routeMetched.filter(item => {
@@ -100,11 +102,11 @@ export const getRouteTitleHandled = (route) => {
 export const showTitle = (item, vm) => {
     let { title, __titleIsFunction__ } = item.meta
     if (!title) return
-    if (useI18n) {
-      if (title.includes('{{') && title.includes('}}') && useI18n) title = title.replace(/({{[\s\S]+?}})/, (m, str) => str.replace(/{{([\s\S]*)}}/, (m, _) => vm.$t(_.trim())))
-      else if (__titleIsFunction__) title = item.meta.title
-      else title = vm.$t(item.name)
-    } else title = (item.meta && item.meta.title) || item.name
+    // if (useI18n) {
+    //   if (title.includes('{{') && title.includes('}}') && useI18n) title = title.replace(/({{[\s\S]+?}})/, (m, str) => str.replace(/{{([\s\S]*)}}/, (m, _) => vm.$t(_.trim())))
+    //   else if (__titleIsFunction__) title = item.meta.title
+    //   else title = vm.$t(item.name)
+    // } else title = (item.meta && item.meta.title) || item.name
     return title
 }
 
