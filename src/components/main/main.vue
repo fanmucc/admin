@@ -12,9 +12,10 @@
           <a-header class="header-con">
             <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" style="background: #fff; padding: 0"></header-bar>
           </a-header>
-          <a-layout-content
-              :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-            >
+          <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+              <div class="tag-nav-wrapper">
+                <tags-nav/>
+              </div>
               <router-view></router-view>
             </a-layout-content>
           </a-layout>
@@ -34,6 +35,7 @@ const SubMenu = Menu.SubMenu
 
 import SideMenu from './components/side-menu'
 import HeaderBar from './components/header-bar'
+import TagsNav from './components/tags-nav'
 import minLogo from '@/assets/images/logo-min.jpg'
 import maxLogo from '@/assets/images/logo.jpg'
 import './main.less'
@@ -51,7 +53,8 @@ export default {
     'a-menu-item': MenuItem,
     'a-sub-menu': SubMenu,
     'header-bar': HeaderBar,
-    'side-menu': SideMenu
+    'side-menu': SideMenu,
+    TagsNav
   },
   computed: {
     routerPages () {

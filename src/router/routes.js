@@ -23,7 +23,7 @@ const routes = [
               path: 'home',
               name: 'home',
               meta: {
-                title: 'home',
+                title: '首页',
                 icon: 'user'
               },
               component: Home

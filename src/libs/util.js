@@ -114,8 +114,10 @@ export const showTitle = (item, vm) => {
  * @param {Object} vm Vue实例
  */
 export const setTitle = (routeItem, vm) => {
+    console.log(routeItem, vm)
     const handledRoute = getRouteTitleHandled(routeItem)
     const pageTitle = showTitle(handledRoute, vm)
-    // const resTitle = pageTitle ? `${title} - ${pageTitle}` : title
-    // window.document.title = resTitle
+    const resTitle = pageTitle ? `${title} - ${pageTitle}` : title
+    console.log(resTitle)
+    window.document.title = resTitle
   }
