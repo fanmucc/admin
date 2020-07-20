@@ -1,5 +1,5 @@
 <template functional>
-    <a-sub-menu key="sub2">
+    <a-sub-menu :key="data.attrs.menuInfo.name">
         <span slot="title">
             <a-icon
             :type="data.attrs.menuInfo.meta.icon"
@@ -11,7 +11,7 @@
                 <a-icon :type="item.meta.icon" v-if="item.meta.icon" />
                     <span>{{ item.meta.title }}</span>
             </a-menu-item>
-            <side-menu-item v-else :menuInfo="item" :key="item.path" />
+            <side-menu-item v-else :menuInfo="item" :key="item.name" />
         </template>
     </a-sub-menu>
 </template>

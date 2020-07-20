@@ -48,6 +48,7 @@ export default {
   },
   methods: {
       handleClick (e) {
+          console.log(e.key)
           this.$router.push({
               name: e.key
           })

@@ -31,20 +31,20 @@ const routes = [
       ]
     },
     {
-      path: '/',
+      path: '/about',
       name: '_about',
       meta: {
-        title: '_about',
+        title: '测试页面',
         icon: 'user'
       },
       component: Main,
       children: [
         {
-          path: 'about',
+          path: 'about_page',
           name: 'about',
           meta: {
             icon: 'user',
-            title: 'about'
+            title: '测试页面1'
           },
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -75,7 +75,7 @@ const routes = [
       children: [
         {
           path: 'list',
-          name: 'list',
+          name: 'array_list',
           meta: {
             title: 'list',
             icon: 'user'

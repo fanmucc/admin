@@ -73,6 +73,7 @@ export default {
     }
   },
   mounted () {
+    console.log(this.routerPages)
     this.setHomeRoute(routers)
     this.setBreadCrumb(this.$route)
   },

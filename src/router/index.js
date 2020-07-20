@@ -32,8 +32,8 @@ router.beforeEach((to, from, next) => {
     if (!store.state.user.getRouteStatus) {
       // 如果路由表数据为false，则重新拉去用户信息
       store.dispatch('getUserInfo').then(user => {
+        console.log('---')
         next()
-        console.log('111','====')
       }).catch(() => {
         // 说明通过token登录发生错误，token 过期则跳转到登录页
         setToken('')    // 清空token
@@ -41,16 +41,19 @@ router.beforeEach((to, from, next) => {
           name: LOGIN_PATH_NAME
         })
       })
-    } 
-  }
+    } else {
+      next()
+    }
+  } 
 })
 
 
-router.afterEach(to => {
-  setTitle(to, router.app)
-  // iView.LoadingBar.finish()
-  window.scrollTo(0, 0)
-})
+// router.afterEach((to, next) => {
+//   setTitle(to, router.app)
+//   // iView.LoadingBar.finish()
+//   window.scrollTo(0, 0)
+//   next()
+// })
 
 
 export default router

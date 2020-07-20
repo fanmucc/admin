@@ -37,7 +37,7 @@ const USER_MAP = {
               },
               children: [
                   {
-                      name: 'list',
+                      name: 'array_list',
                       meta: {
                           title: '列表页',
                           icon: 'user'
