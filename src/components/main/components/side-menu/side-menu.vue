@@ -1,6 +1,6 @@
 <template>
   <div id="side-menu">
-    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']" @click="handleClick">
+    <a-menu :theme="theme" :mode="mode" :default-selected-keys="defaultSelectedKeys" @click="handleClick">
         <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
@@ -38,7 +38,20 @@ export default {
       routePageList: {
           type: Array,
           default: () => []
+      },
+      theme: {
+          type: String,
+          default: 'dark'
+      },
+      mode: {
+          type: String,
+          default: 'inline'
+      },
+      defaultSelectedKeys: {
+          type: Array,
+          default: () => []
       }
+
   },
   data () {
       return {
@@ -48,10 +61,7 @@ export default {
   },
   methods: {
       handleClick (e) {
-          console.log(e.key)
-          this.$router.push({
-              name: e.key
-          })
+          this.$emit('on-side-menu', e)
       }
   }
 }

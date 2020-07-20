@@ -35,9 +35,9 @@ export const getParams = url => {
  * @returns {Array}
  */
 export const getBreadCrumbList = (route, homeRoute) => {
-  console.log(route, homeRoute)
+  console.log(homeRoute, 'homeRoute')
+  console.log(route, 'route')
   let homeItem = { ...homeRoute, icon: homeRoute.meta.icon }
-  console.log(homeItem, '====')
   let routeMetched = route.matched
   if (routeMetched.some(item => item.name === homeRoute.name)) return [homeItem]
   let res = routeMetched.filter(item => {
@@ -58,6 +58,7 @@ export const getBreadCrumbList = (route, homeRoute) => {
   res = res.filter(item => {
     return !item.meta.hideInMenu
   })
+  console.log([{ ...homeItem, to: homeRoute.path }, ...res], '返回的值')
   return [{ ...homeItem, to: homeRoute.path }, ...res]
 }
 

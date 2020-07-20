@@ -1,12 +1,12 @@
 <template>
     <div class="main">
         <a-layout id="components-layout-demo-custom-trigger">
-            <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
+            <a-layout-sider v-model="collapsed" :trigger="null" collapsible >
               <div class="logo">
                   <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
                   <img v-show="collapsed" :src="minLogo" key="min-logo" />
               </div>
-              <side-menu :routePageList="routerPages"></side-menu>
+              <side-menu theme="dark" mode="inline" :default-selected-keys="defaultSelectKeys" :routePageList="routerPages" @on-side-menu="handleSideMenu"></side-menu>
             </a-layout-sider>
         <a-layout>
           <a-header class="header-con">
@@ -23,6 +23,8 @@
 </template>
 <script>
 import store from '@/store'
+import config from '@/config'
+const homeName = config.homeName
 import { mapMutations } from 'vuex'
 import routers from '@/router/routes'
 import { Layout, Icon, Menu } from 'ant-design-vue'
@@ -54,6 +56,9 @@ export default {
   computed: {
     routerPages () {
       return store.state.user.routeList
+    },
+    defaultSelectKeys () {
+      return [`${homeName}`]
     }
   },
   data() {
@@ -70,14 +75,28 @@ export default {
     ]),
     handleCollapsedChange (state) {
       this.collapsed = state
+    },
+    handleSideMenu (state) {
+      this.$router.push({
+        name: state.key
+      })
     }
   },
   mounted () {
-    console.log(this.routerPages)
+    /**
+     * @description 初始化设置面包屑和标签导航
+     */
+    const { name, query, params, meta } = this.$route
     this.setHomeRoute(routers)
     this.setBreadCrumb(this.$route)
+
+
   },
   watch: {
+    '$route' (newRoute) {
+        const {name, query, params, meta} = newRoute
+        this.setBreadCrumb(newRoute)
+    }
   }
 };
 </script>

@@ -35,7 +35,8 @@ const routes = [
       name: '_about',
       meta: {
         title: '测试页面',
-        icon: 'user'
+        icon: 'user',
+        hideInBread: true
       },
       component: Main,
       children: [
