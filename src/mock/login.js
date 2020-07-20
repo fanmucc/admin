@@ -16,6 +16,7 @@ const USER_MAP = {
       avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4',
       routerPages: [
           {
+              path: '/home',
               name: 'home',
               meta: {
                   title: '首页',
@@ -23,6 +24,7 @@ const USER_MAP = {
               }
           },
           {
+              path: '/about',
               name: 'about',
               meta: {
                   title: 'about页',
@@ -30,6 +32,7 @@ const USER_MAP = {
               }
           },
           {
+              path: '/array',
               name: 'array',
               meta: {
                   title: '列表',
@@ -37,6 +40,7 @@ const USER_MAP = {
               },
               children: [
                   {
+                      path: 'array_list',
                       name: 'array_list',
                       meta: {
                           title: '列表页',

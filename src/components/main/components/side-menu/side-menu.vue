@@ -1,6 +1,6 @@
 <template>
   <div id="side-menu">
-    <a-menu :theme="theme" :mode="mode" :default-selected-keys="defaultSelectedKeys" @click="handleClick">
+    <a-menu :theme="theme" :mode="mode"  :defaultSelectedKeys="defaultSelectedKeys" :selectedKeys="SelectKeys"  @click="handleClick">
         <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
@@ -48,6 +48,10 @@ export default {
           default: 'inline'
       },
       defaultSelectedKeys: {
+          type: Array,
+          default: () => []
+      },
+      SelectKeys: {
           type: Array,
           default: () => []
       }

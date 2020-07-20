@@ -6,7 +6,7 @@
                   <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
                   <img v-show="collapsed" :src="minLogo" key="min-logo" />
               </div>
-              <side-menu theme="dark" mode="inline" :default-selected-keys="defaultSelectKeys" :routePageList="routerPages" @on-side-menu="handleSideMenu"></side-menu>
+              <side-menu theme="dark" mode="inline" :default-selected-keys="defaultSelectKeys" :SelectKeys="SelectKeys" :routePageList="routerPages" @on-side-menu="handleSideMenu"></side-menu>
             </a-layout-sider>
         <a-layout>
           <a-header class="header-con">
@@ -65,7 +65,8 @@ export default {
     return {
       collapsed: false,
       minLogo,
-      maxLogo
+      maxLogo,
+      SelectKeys: []
     };
   },
   methods: {
@@ -87,6 +88,7 @@ export default {
      * @description 初始化设置面包屑和标签导航
      */
     const { name, query, params, meta } = this.$route
+    this.SelectKeys = [`${name}`]
     this.setHomeRoute(routers)
     this.setBreadCrumb(this.$route)
 
@@ -96,6 +98,8 @@ export default {
     '$route' (newRoute) {
         const {name, query, params, meta} = newRoute
         this.setBreadCrumb(newRoute)
+        this.SelectKeys = [this.$route.name]
+        console.log(this.SelectKeys)
     }
   }
 };

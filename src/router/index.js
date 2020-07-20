@@ -11,6 +11,10 @@ const router = new VueRouter({
   routes
 })
 
+/**
+ * @description 消除重复点击侧边栏引起的重复添加路由错误
+ */
+
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
