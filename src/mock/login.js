@@ -27,7 +27,7 @@ const USER_MAP = {
               path: '/about',
               name: 'about',
               meta: {
-                  title: 'about页',
+                  title: '测试页面1',
                   icon: 'user'
               }
           },
