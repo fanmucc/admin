@@ -12,12 +12,16 @@
           <a-header class="header-con">
             <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" style="background: #fff; padding: 0"></header-bar>
           </a-header>
-          <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-              <div class="tag-nav-wrapper">
-                <tags-nav/>
-              </div>
-              <router-view></router-view>
+          <Content class="main-content-con">
+            <a-layout-content class="main-layout-con">
+                <div class="tag-nav-wrapper">
+                  <tags-nav :value="$route" :list="tagNavList" @input="handleClick"/>
+                </div>
+                <Content class="content-wrapper">
+                  <router-view></router-view>
+                </Content>
             </a-layout-content>
+          </Content>
           </a-layout>
       </a-layout>
     </div>
@@ -26,6 +30,7 @@
 import store from '@/store'
 import config from '@/config'
 const homeName = config.homeName
+import { getNewTagList, routeEqual } from '@/libs/util'
 import { mapMutations } from 'vuex'
 import routers from '@/router/routes'
 import { Layout, Icon, Menu } from 'ant-design-vue'
@@ -62,6 +67,9 @@ export default {
     },
     defaultSelectKeys () {
       return [`${homeName}`]
+    },
+    tagNavList () {
+      return this.$store.state.app.tagNavList
     }
   },
   data() {
@@ -76,14 +84,35 @@ export default {
     ...mapMutations([
       'setBreadCrumb',
       'setHomeRoute',
+      'addTag',
     ]),
+    turnToPage (route) {
+      let {name, params, query } = {}
+      if (typeof route === 'string') name = route
+      else {
+        name = route.name
+        params = route.params
+        query = route.query
+      }
+      if (name.indexOf('isTrunByHref_') > -1) {
+        window.open(name.split('-')[1])
+        return
+      }
+      this.$router.push({
+        name,
+        params,
+        query
+      })
+    },
     handleCollapsedChange (state) {
       this.collapsed = state
     },
     handleSideMenu (state) {
-      this.$router.push({
-        name: state.key
-      })
+      this.turnToPage(item)
+    },
+    // tags事件
+    handleClick(item) {
+      this.turnToPage(item)
     }
   },
   mounted () {
@@ -91,18 +120,32 @@ export default {
      * @description 初始化设置面包屑和标签导航
      */
     const { name, query, params, meta } = this.$route
+
+    // tags
+    this.addTag({
+      route: {name, query, params, meta}   
+    })
+
+    // 面包屑
     this.SelectKeys = [`${name}`]
     this.setHomeRoute(routers)
     this.setBreadCrumb(this.$route)
 
 
   },
+  // 监听路由变化 进行tags标签渲染 和 面包屑设置
   watch: {
     '$route' (newRoute) {
         const {name, query, params, meta} = newRoute
+        // tags
+        this.addTag({
+          route: {name, query, params, meta},
+          type: 'push'
+        })
+        // 面包屑
         this.setBreadCrumb(newRoute)
         this.SelectKeys = [this.$route.name]
-        console.log(this.SelectKeys)
+
     }
   }
 };
