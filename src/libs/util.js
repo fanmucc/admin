@@ -15,7 +15,6 @@ export const getToken = () => {
    if (token) return token
    else return false
  }
-
 /**
  * @param {String} url
  * @description 从URL中解析参数
