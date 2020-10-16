@@ -4,6 +4,10 @@ export default {
    */
   title: 'iView-admin',
   /**
+   * @description header高度
+   */
+  heightBar: 50,
+  /**
    * @description token在Cookie中存储的天数，默认1天
    */
   cookieExpires: 1,

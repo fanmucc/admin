@@ -55,6 +55,26 @@ const routes = [
       ]
     },
     {
+      path: '/array',
+      name: 'array',
+      meta: {
+        title: 'array',
+        icon: 'user'
+      },
+      component: Main,
+      children: [
+        {
+          path: 'list',
+          name: 'array_list',
+          meta: {
+            title: 'list',
+            icon: 'user'
+          },
+          component: () => import(/*webpckChunkName: "list"*/ '../views/List.vue')
+        }
+      ]
+    },
+    {
       path: '/401',
       name: 'error_401',
       meta: {
@@ -65,25 +85,6 @@ const routes = [
         hideInMenu: true
       },
       component: () => import(/* webpackChunkName: "401" */'@/views/error-page/401.vue')
-    },
-    {
-      path: '/array',
-      name: 'array',
-      meta: {
-        title: 'array',
-        icon: 'user'
-      },
-      children: [
-        {
-          path: 'list',
-          name: 'array_list',
-          meta: {
-            title: 'list',
-            icon: 'user'
-          },
-          component: () => import(/*webpckChunkName: "list"*/ '@/views/list.vue')
-        }
-      ]
     },
     {
       path: '/500',

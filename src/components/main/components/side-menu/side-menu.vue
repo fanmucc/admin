@@ -1,6 +1,6 @@
 <template>
-  <div id="side-menu">
-    <a-menu :theme="theme" :mode="mode"  :defaultSelectedKeys="defaultSelectedKeys" :selectedKeys="SelectKeys"  @click="handleClick">
+<div id="side-menu">
+    <a-menu :theme="theme" :mode="mode" :defaultSelectedKeys="defaultSelectedKeys" :selectedKeys="SelectKeys" @click="handleClick">
         <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
@@ -11,62 +11,63 @@
                 <a-menu-item :name="item.name" :key="`${item.name}`">
                     <a-icon :type="item.meta.icon" />
                     <span>{{item.meta.title}}</span>
-                </a-menu-item> 
+                </a-menu-item>
             </template>
         </template>
     </a-menu>
-  </div>
+</div>
 </template>
 
 <script>
-import { Icon, Menu } from 'ant-design-vue'
-const MenuItem  = Menu.Item
+import {
+    Icon,
+    Menu
+} from 'ant-design-vue'
+const MenuItem = Menu.Item
 const SubMenu = Menu.SubMenu
 
 import SideMenuItem from './side-menu-item.vue'
 
 export default {
-  name: 'SideMenu',
-  components: {
-      'a-menu': Menu,
-      'a-menu-item': MenuItem,
-      'a-sub-menu': SubMenu,
-      'a-icon': Icon,
-      SideMenuItem
-  },
-  props: {
-      routePageList: {
-          type: Array,
-          default: () => []
-      },
-      theme: {
-          type: String,
-          default: 'dark'
-      },
-      mode: {
-          type: String,
-          default: 'inline'
-      },
-      defaultSelectedKeys: {
-          type: Array,
-          default: () => []
-      },
-      SelectKeys: {
-          type: Array,
-          default: () => []
-      }
+    name: 'SideMenu',
+    components: {
+        'a-menu': Menu,
+        'a-menu-item': MenuItem,
+        'a-sub-menu': SubMenu,
+        'a-icon': Icon,
+        SideMenuItem
+    },
+    props: {
+        routePageList: {
+            type: Array,
+            default: () => []
+        },
+        theme: {
+            type: String,
+            default: 'dark'
+        },
+        mode: {
+            type: String,
+            default: 'inline'
+        },
+        defaultSelectedKeys: {
+            type: Array,
+            default: () => []
+        },
+        SelectKeys: {
+            type: Array,
+            default: () => []
+        }
 
-  },
-  data () {
-      return {
-      }
-  },
-  created () {
-  },
-  methods: {
-      handleClick (e) {
-          this.$emit('on-side-menu', e)
-      }
-  }
+    },
+    data() {
+        return {}
+    },
+    created() {},
+    methods: {
+        handleClick(e) {
+            this.$emit('on-side-menu', e.key)
+        }
+    }
 }
 </script>

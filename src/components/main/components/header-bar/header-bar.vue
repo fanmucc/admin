@@ -1,11 +1,15 @@
 <template>
-    <div class="header-bar">
-        <sider-trigger :collapsed="collapsed" @on-change="handleCollpasedChange"></sider-trigger>
-        <custom-bread-crumb :list="breadCrumbList"></custom-bread-crumb>
-    </div>
+<div class="header-bar">
+    <sider-trigger class="custom-content-con sider-icon" :collapsed="collapsed" @on-change="handleCollpasedChange"></sider-trigger>
+    <!-- <custom-bread-crumb :list="breadCrumbList"></custom-bread-crumb> -->
+    <custom-bread-crumb class="custom-content-con" :list="breadCrumbList"></custom-bread-crumb>
+</div>
 </template>
+
 <script>
-import { Icon } from 'ant-design-vue'
+import {
+    Icon
+} from 'ant-design-vue'
 import siderTrigger from './sider-trigger'
 import customBreadCrumb from './custom-bread-crumb'
 import './header-bar.less'
@@ -23,12 +27,12 @@ export default {
         }
     },
     computed: {
-        breadCrumbList () {
+        breadCrumbList() {
             return this.$store.state.app.breadCrumbList
         }
     },
     methods: {
-        handleCollpasedChange (state) {
+        handleCollpasedChange(state) {
             this.$emit('on-coll-change', state)
         }
     }

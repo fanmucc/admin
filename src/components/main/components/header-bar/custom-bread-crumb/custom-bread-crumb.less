@@ -2,11 +2,23 @@
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    margin-left: 10px;
 }
 .a-custom-bread-crumb {
     height: 100%;
-    line-height: 66px;
-    margin-top: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-  
+.ant-breadcrumb {
+    font-size: 15px;
+    -moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    -khtml-user-select:none;/*早期浏览器*/
+    user-select:none;
+}
+
+.breadcrumb-hover:nth-of-type(1):hover {
+    color: #1890ff;
+    cursor: pointer;
+}
