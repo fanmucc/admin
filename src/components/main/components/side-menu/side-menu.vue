@@ -53,7 +53,7 @@ export default {
     },
     data() {
         return {
-            openKeys: window.sessionStorage.getItem('openKeys') !== " " ? JSON.parse(window.sessionStorage.getItem('openKeys')) : []
+            openKeys: window.sessionStorage.getItem('openKeys') !== null ? JSON.parse(window.sessionStorage.getItem('openKeys')) : []
         }
     },
     created() {},

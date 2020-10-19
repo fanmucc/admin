@@ -54,26 +54,26 @@ const routes = [
         }
       ]
     },
-    {
-      path: '/array',
-      name: 'array',
-      meta: {
-        title: 'array',
-        icon: 'user'
-      },
-      component: Main,
-      children: [
-        {
-          path: 'list',
-          name: 'array_list',
-          meta: {
-            title: 'list',
-            icon: 'user'
-          },
-          component: () => import(/*webpckChunkName: "list"*/ '../views/List.vue')
-        }
-      ]
-    },
+    // {
+    //   path: '/array',
+    //   name: 'array',
+    //   meta: {
+    //     title: 'array',
+    //     icon: 'user'
+    //   },
+    //   component: Main,
+    //   children: [
+    //     {
+    //       path: 'list',
+    //       name: 'array_list',
+    //       meta: {
+    //         title: 'list',
+    //         icon: 'user'
+    //       },
+    //       component: () => import(/*webpckChunkName: "list"*/ '../views/List.vue')
+    //     }
+    //   ]
+    // },
     {
       path: '/arraylist',
       name: 'array1',
@@ -90,7 +90,7 @@ const routes = [
             title: 'list',
             icon: 'user'
           },
-          component: () => import(/*webpckChunkName: "list1"*/ '../views/List1.vue')
+          component: () => import(/*webpckChunkName: "list1"*/ '../views/aaaa.vue')
         }
       ]
     },
