@@ -6,7 +6,7 @@
                 <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
                 <img v-show="collapsed" :src="minLogo" key="min-logo" />
             </div>
-            <side-menu theme="dark" mode="inline" :default-selected-keys="defaultSelectKeys" :SelectKeys="SelectKeys" :routePageList="routerPages" @on-side-menu="handleSideMenu"></side-menu>
+            <side-menu theme="dark" mode="inline" :routePageList="routerPages" @on-side-menu="handleSideMenu"></side-menu>
         </a-layout-sider>
         <a-layout>
             <a-header class="header-con" :style="{height: heightBarStyle}">
@@ -80,9 +80,6 @@ export default {
         routerPages() {
             return store.state.user.routeList
         },
-        defaultSelectKeys() {
-            return [`${homeName}`]
-        },
         tagNavList() {
             return this.$store.state.app.tagNavList
         },
@@ -95,7 +92,8 @@ export default {
             collapsed: false,
             minLogo,
             maxLogo,
-            SelectKeys: []
+            SelectKeys: [],
+            defaultSelectKeys: [`${homeName}`]
         };
     },
     methods: {
@@ -130,7 +128,6 @@ export default {
             this.collapsed = state
         },
         handleSideMenu(state) {
-            console.log(state)
             this.turnToPage(state)
         },
         // tags事件
@@ -187,7 +184,7 @@ export default {
             // 面包屑
             this.setBreadCrumb(newRoute)
             this.SelectKeys = [this.$route.name]
-
+            this.defaultSelectKeys = [name]
         }
     }
 };

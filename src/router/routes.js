@@ -75,6 +75,26 @@ const routes = [
       ]
     },
     {
+      path: '/arraylist',
+      name: 'array1',
+      meta: {
+        title: 'array1',
+        icon: 'user'
+      },
+      component: Main,
+      children: [
+        {
+          path: 'listlist1',
+          name: 'listlist1',
+          meta: {
+            title: 'list',
+            icon: 'user'
+          },
+          component: () => import(/*webpckChunkName: "list1"*/ '../views/List1.vue')
+        }
+      ]
+    },
+    {
       path: '/401',
       name: 'error_401',
       meta: {

@@ -42,7 +42,6 @@ router.beforeEach((to, from, next) => {
     if (!store.state.user.getRouteStatus) {
       // 如果路由表数据为false，则重新拉去用户信息
       store.dispatch('getUserInfo').then(user => {
-        console.log('---')
         next()
       }).catch(() => {
         // 说明通过token登录发生错误，token 过期则跳转到登录页

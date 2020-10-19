@@ -48,7 +48,25 @@ const USER_MAP = {
                       }
                   }
               ]
-          }
+          },
+          {
+                path: '/arraylist',
+                name: 'array1',
+                meta: {
+                    title: '列表1',
+                    icon: 'user'
+                },
+                children: [
+                    {
+                        path: 'listlist1',
+                        name: 'array_list_1',
+                        meta: {
+                            title: '列表页1',
+                            icon: 'user'
+                        }
+                    }
+                ]
+           }
       ]
     }
 }

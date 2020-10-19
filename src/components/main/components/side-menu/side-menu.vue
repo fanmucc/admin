@@ -1,6 +1,6 @@
 <template>
 <div id="side-menu">
-    <a-menu :theme="theme" :mode="mode" :defaultSelectedKeys="defaultSelectedKeys" :selectedKeys="SelectKeys" @click="handleClick">
+    <a-menu :theme="theme" :mode="mode" :open-keys="openKeys" :defaultSelectedKeys="[`${this.$route.name}`]" :selectedKeys="[`${this.$route.name}`]" @click="handleClick" @openChange="sideMenu">
         <template v-for="item in routePageList">
             <!-- 当路由信息有子路由是走这一步 -->
             <template v-if="item.children != undefined">
@@ -49,24 +49,36 @@ export default {
         mode: {
             type: String,
             default: 'inline'
-        },
-        defaultSelectedKeys: {
-            type: Array,
-            default: () => []
-        },
-        SelectKeys: {
-            type: Array,
-            default: () => []
         }
-
     },
     data() {
-        return {}
+        return {
+            openKeys: window.sessionStorage.getItem('openKeys') !== " " ? JSON.parse(window.sessionStorage.getItem('openKeys')) : []
+        }
     },
     created() {},
     methods: {
         handleClick(e) {
+            if (e.keyPath[e.keyPath.length - 1] !== this.openKeys[0]) this.openKeys = []
+            window.sessionStorage.setItem('openKeys', JSON.stringify(this.openKeys))
             this.$emit('on-side-menu', e.key)
+        },
+        sideMenu(e) {
+            console.log(e, '====')
+            if (this.openKeys.length === 0) {
+                // openKeys 为空时直接进行展开
+                this.openKeys = e
+            } else {
+                // 不为空时
+                const lastOpenKey = e.find(key => this.openKeys.indexOf(key) === -1);
+                if (this.$route.path === lastOpenKey) {
+                    // 如果当前路由 === 
+                    this.openKeys = e
+                } else {
+                    this.openKeys = lastOpenKey ? [lastOpenKey] : []
+                }
+            }
+            window.sessionStorage.setItem('openKeys', JSON.stringify(this.openKeys))
         }
     }
 }
