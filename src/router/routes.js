@@ -1,4 +1,4 @@
-import Home from '../views/Home.vue'
+import Home from '../views/single-page/home'
 import Main from '../components/main'
 const routes = [
     {
@@ -28,70 +28,6 @@ const routes = [
               },
               component: Home
           }
-      ]
-    },
-    {
-      path: '/about',
-      name: '_about',
-      meta: {
-        title: '测试页面',
-        icon: 'user',
-        hideInBread: true
-      },
-      component: Main,
-      children: [
-        {
-          path: 'about_page',
-          name: 'about',
-          meta: {
-            icon: 'user',
-            title: '测试页面1'
-          },
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-        }
-      ]
-    },
-    // {
-    //   path: '/array',
-    //   name: 'array',
-    //   meta: {
-    //     title: 'array',
-    //     icon: 'user'
-    //   },
-    //   component: Main,
-    //   children: [
-    //     {
-    //       path: 'list',
-    //       name: 'array_list',
-    //       meta: {
-    //         title: 'list',
-    //         icon: 'user'
-    //       },
-    //       component: () => import(/*webpckChunkName: "list"*/ '../views/List.vue')
-    //     }
-    //   ]
-    // },
-    {
-      path: '/arraylist',
-      name: 'array1',
-      meta: {
-        title: 'array1',
-        icon: 'user'
-      },
-      component: Main,
-      children: [
-        {
-          path: 'listlist1',
-          name: 'listlist1',
-          meta: {
-            title: 'list',
-            icon: 'user'
-          },
-          component: () => import(/*webpckChunkName: "list1"*/ '../views/aaaa.vue')
-        }
       ]
     },
     {

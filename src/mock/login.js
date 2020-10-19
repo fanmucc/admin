@@ -23,50 +23,6 @@ const USER_MAP = {
                   icon: 'user'
               }
           },
-          {
-              path: '/about',
-              name: 'about',
-              meta: {
-                  title: '测试页面1',
-                  icon: 'user'
-              }
-          },
-          {
-              path: '/array',
-              name: 'array',
-              meta: {
-                  title: '列表',
-                  icon: 'user'
-              },
-              children: [
-                  {
-                      path: 'array_list',
-                      name: 'array_list',
-                      meta: {
-                          title: '列表页',
-                          icon: 'user'
-                      }
-                  }
-              ]
-          },
-          {
-                path: '/arraylist',
-                name: 'array1',
-                meta: {
-                    title: '列表1',
-                    icon: 'user'
-                },
-                children: [
-                    {
-                        path: 'listlist1',
-                        name: 'array_list_1',
-                        meta: {
-                            title: '列表页1',
-                            icon: 'user'
-                        }
-                    }
-                ]
-           }
       ]
     }
 }
