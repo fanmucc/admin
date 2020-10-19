@@ -30,7 +30,7 @@ export default {
         return {
             inforCardData: [{
                     title: '新增用户',
-                    icon: 'md-person-add',
+                    icon: 'user-add',
                     count: 803,
                     color: '#2d8cf0'
                 },
