@@ -64,7 +64,6 @@ export default {
             this.$emit('on-side-menu', e.key)
         },
         sideMenu(e) {
-            console.log(e, '====')
             if (this.openKeys.length === 0) {
                 // openKeys 为空时直接进行展开
                 this.openKeys = e
