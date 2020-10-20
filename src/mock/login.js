@@ -15,14 +15,14 @@ const USER_MAP = {
       token: 'admin',
       avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4',
       routerPages: [
-          {
-              path: '/home',
-              name: 'home',
-              meta: {
-                  title: '首页',
-                  icon: 'user'
-              }
-          },
+        //   {
+        //       path: '/home',
+        //       name: 'home',
+        //       meta: {
+        //           title: '首页',
+        //           icon: 'user'
+        //       }
+        //   },
       ]
     }
 }

@@ -56,7 +56,6 @@ export default {
     },
     methods: {
         handleClickToAbout() {
-            console.log(111)
             this.$router.push({
                 name: 'about'
             })
@@ -86,9 +85,11 @@ export default {
 .info-card-wrapper {
     .size;
     overflow: hidden;
+    border-radius: 5px;
 
-    .ivu-card-body {
+    .ant-card-body {
         .size;
+        padding: 0;
     }
 
     .content-con {

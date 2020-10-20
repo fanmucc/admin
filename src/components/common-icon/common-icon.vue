@@ -1,5 +1,5 @@
 <template>
-<component :is="iconType" :type="iconName" :color="iconColor" :size="iconSize"></component>
+<component :is="iconType" :type="iconName" :color="iconColor" :size="iconSize" :style="antdIcon"></component>
 </template>
 
 <script>
@@ -32,7 +32,14 @@ export default {
             return this.size || (this.iconType === 'Icons' ? 12 : undefined)
         },
         iconColor() {
+            console.log(this.iconSize, 'common-icon颜色')
             return this.color || ''
+        },
+        antdIcon() {
+            return this.iconType === 'Icons' ? {} : {
+                fontSize: `${this.size}px`,
+                color: this.color
+            }
         }
     },
     methods: {
