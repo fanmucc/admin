@@ -1,5 +1,6 @@
 import Home from '../views/single-page/home'
 import Main from '../components/main'
+import { Icon } from 'ant-design-vue';
 const routes = [
     {
       path: '/login',
@@ -28,6 +29,27 @@ const routes = [
               },
               component: Home
           }
+      ]
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      meta: {
+        title: '上传',
+        icon: 'user',
+        hideInBread: true
+      },
+      component: Main,
+      children: [
+        {
+          path: 'upload-excel',
+          name: 'upload-excel',
+          meta: {
+            title: 'Excel上传',
+            icon: 'user'
+          },
+          component: () => import(/*  webpackChunkName: "upload-excel"  */ '../views/upload')
+        }
       ]
     },
     {

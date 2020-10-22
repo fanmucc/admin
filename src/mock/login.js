@@ -23,6 +23,14 @@ const USER_MAP = {
         //           icon: 'user'
         //       }
         //   },
+        {
+                path: '/upload-excel',
+                name: 'upload-excel',
+                meta: {
+                  title: 'Excel上传',
+                  icon: 'user'
+                }
+        },
       ]
     }
 }

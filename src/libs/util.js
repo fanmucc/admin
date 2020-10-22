@@ -55,6 +55,7 @@ export const doCustomTimes = (times, callback) => {
  * @returns {Array}
  */
 export const getBreadCrumbList = (route, homeRoute) => {
+  console.log(route, homeRoute)
   let homeItem = { ...homeRoute, icon: homeRoute.meta.icon }
   let routeMetched = route.matched
   if (routeMetched.some(item => item.name === homeRoute.name)) return [homeItem]
